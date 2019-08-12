@@ -1,11 +1,12 @@
-
-
-
-<div class="center jumbotron">
-    <div class="text-center">
-        <h1>Postten<br> Dance</h1>
-        <h3>ダンスレッスン投稿サービス</h3>
-        <%= link_to 'Sign up', signup_path, class: 'btn btn-lg btn-primary' %>
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<% else %>
+    <div class="center jumbotron">
+        <div class="text-center">
+            <h1>Postten<br> Dance</h1>
+            <h3>ダンスレッスン投稿サービス</h3>
+            <%= link_to 'Sign up', signup_path, class: 'btn btn-lg btn-primary' %>
         
+        </div>
     </div>
-</div>
+<% end %>
