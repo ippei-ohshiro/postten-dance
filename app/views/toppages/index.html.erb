@@ -1,12 +1,33 @@
 <% if logged_in? %>
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <%= link_to 'Lesson一覧へ', lessons_path, class: 'btn btn-lg btn-primary' %>
+  <%= link_to 'Lesson作成へ', new_lesson_path, class: 'btn btn-lg btn-primary' %>
 <% else %>
     <div class="center jumbotron">
         <div class="text-center">
             <h1>Postten<br> Dance</h1>
             <h3>ダンスレッスン投稿サービス</h3>
-            <%= link_to 'Sign up', signup_path, class: 'btn btn-lg btn-primary' %>
-        
+            <%= link_to 'Sign in', signup_path, class: 'btn btn-lg btn-primary' %>
+            <%= link_to 'Login', login_path, class: 'btn btn-lg btn-primary' %>
         </div>
     </div>
+<div>
+    <div>
+        <p>Postten Danceとは</p>
+        <p>ダンスに特化したオンラインレッスンサービスです</p>
+    </div>
+    <div>
+        <h3>Lessonを作成</h3>
+        <p>自分で考えたオリジナルのダンスレッスンを作成し、投稿します。</p>
+    </div>
+    <div>
+        <h3>Lessonを受講</h3>
+        <p>様々なダンサーが作成したオリジナルのダンスレッスンを受講できます。様々なダンサーの練習方法、体の使い方などを学べます。</p>
+    </div>
+    <%= link_to 'Sign in', signup_path, class: 'btn btn-lg btn-primary' %>
+</div>
+    
+    
+    
+    
 <% end %>
