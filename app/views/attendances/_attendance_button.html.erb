@@ -1,0 +1,14 @@
+<% unless current_user == lesson.user %>
+  <% if current_user.att_lesson?(lesson) %>
+    <%= form_with(model: current_user.attendances.find_by(lesson_id: lesson.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :lesson_id, lesson.id %>
+      <%= f.submit '受講をやめる', class: 'btn btn-danger btn-sm' %>
+      <p><%= link_to '詳細', lesson_path(lesson) %></p>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.attendances.build, local: true) do |f| %>
+      <%= hidden_field_tag :lesson_id, lesson.id %>
+      <%= f.submit '受講', class: 'btn btn-primary btn-sm' %>
+    <% end %>
+  <% end %>
+<% end %>

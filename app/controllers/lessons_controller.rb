@@ -1,11 +1,11 @@
 class LessonsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
-  
+  before_action :correct_user, only: [:destroy, :edit, :update]
   
   def index
     if logged_in?
-      @lessons = current_user.lessons.order(id: :desc).page(params[:page])
+      @lessons = current_user.timeline.order(id: :desc).page(params[:page])
+      
     end
   end
 
@@ -23,7 +23,7 @@ class LessonsController < ApplicationController
       flash[:success] = 'Lessonを投稿しました。'
       redirect_to @lesson
     else
-      @lessons = current_user.lessons.order(id: :desc).page(params[:page])
+      @lessons = current_user.timeline.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'Lessonの投稿に失敗しました。'
       render 'lesson/new'
     end
@@ -62,5 +62,6 @@ class LessonsController < ApplicationController
       redirect_to root_url
     end
   end
+  
 end
 

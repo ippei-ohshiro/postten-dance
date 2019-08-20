@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+  
+  def counts(user)
+    @count_lessons = user.lessons.count
+    @count_attendances = user.att_lessons.count
+  end
 end

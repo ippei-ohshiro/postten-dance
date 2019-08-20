@@ -1,6 +1,6 @@
-<% if @lessons.any? %>
+<% if lessons.any? %>
   <ul class="list-unstyled">
-    <% @lessons.each do |lesson| %>
+    <% lessons.each do |lesson| %>
       <li class="media">
         <img class="mr-2 rounded" src="" alt="">
         <div class="media-body">
@@ -22,5 +22,5 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate @lessons %>
+  <%= paginate lessons %>
 <% end %>

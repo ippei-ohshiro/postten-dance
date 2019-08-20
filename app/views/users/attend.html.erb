@@ -5,9 +5,6 @@
         <h3><%= @user.name %></h3>
       </div>
       <div>
-        <%= link_to 'Profileを編集する', edit_user_path(@user) %>
-      </div>
-      <div>
         <img src="" alt="">
       </div>
       <%= link_to 'Lesson作成', new_lesson_path %>
@@ -19,7 +16,8 @@
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">投稿中のレッスン <span class="badge badge-secondary"><%= @count_lessons %></span></a></li>
       <li class="nav-item"><a href="<%= attend_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(attend_user_path(@user)) %>">受講中のレッスン <span class="badge badge-secondary"><%= @count_attendances %></span></a></li>
     </ul>
-     <%= render 'lessons/lessons', lessons: @lessons %>
+    <div>
+      <%= render "lessons/index", lessons: @att_lessons %>
+    </div>
   </div>
   
-</div>

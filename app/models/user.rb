@@ -7,4 +7,23 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :lessons
+  has_many :attendances
+  has_many :att_lessons, through: :attendances, source: :lesson
+  
+  def timeline
+    Lesson.all
+  end
+  
+  def attendance(lesson)
+      self.attendances.find_or_create_by(lesson_id: lesson.id)
+  end
+
+  def unattendance(lesson)
+    attendance = self.attendances.find_by(lesson_id: lesson.id)
+    attendance.destroy if attendance
+  end
+
+  def att_lesson?(lesson)
+    self.att_lessons.include?(lesson)
+  end
 end

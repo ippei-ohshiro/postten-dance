@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_034944) do
+ActiveRecord::Schema.define(version: 2019_08_15_063100) do
+
+  create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_attendances_on_lesson_id"
+    t.index ["user_id", "lesson_id"], name: "index_attendances_on_user_id_and_lesson_id", unique: true
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
 
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -30,5 +40,7 @@ ActiveRecord::Schema.define(version: 2019_08_12_034944) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "attendances", "lessons"
+  add_foreign_key "attendances", "users"
   add_foreign_key "lessons", "users"
 end

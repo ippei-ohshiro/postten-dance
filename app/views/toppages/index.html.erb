@@ -1,18 +1,14 @@
-<% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
-  <%= link_to 'Lesson一覧へ', lessons_path, class: 'btn btn-lg btn-primary' %>
-  <%= link_to 'Lesson作成へ', new_lesson_path, class: 'btn btn-lg btn-primary' %>
-<% else %>
+<% unless logged_in? %>
     <div class="center jumbotron">
         <div class="text-center">
             <h1>Postten<br> Dance</h1>
-            <h3>ダンスレッスン投稿サービス</h3>
+            <h6>ダンスレッスン投稿サービス</h6>
             <%= link_to 'Sign in', signup_path, class: 'btn btn-lg btn-primary' %>
             <%= link_to 'Login', login_path, class: 'btn btn-lg btn-primary' %>
         </div>
     </div>
 <div>
-    <div>
+    <div class="text-center">
         <p>Postten Danceとは</p>
         <p>ダンスに特化したオンラインレッスンサービスです</p>
     </div>
@@ -26,8 +22,5 @@
     </div>
     <%= link_to 'Sign in', signup_path, class: 'btn btn-lg btn-primary' %>
 </div>
-    
-    
-    
     
 <% end %>
