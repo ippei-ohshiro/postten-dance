@@ -57,7 +57,7 @@ class LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.require(:lesson).permit(:title, :subtitle, :content, :picture)
+    params.require(:lesson).permit(:title, :subtitle, :content, :picture, :comment,  :remove_picture)
   end
   
   def correct_user

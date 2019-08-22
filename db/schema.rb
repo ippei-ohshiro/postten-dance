@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_035050) do
+ActiveRecord::Schema.define(version: 2019_08_22_160222) do
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_035050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.string "comment"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
