@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :attend]
+  before_action :correct_user, only: [:destroy, :edit, :update]
   
 
   def index
@@ -51,10 +52,19 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def attendance_user
+    @user = User.find(params[:id])
+    @attendance = Attendance.where(user_id: @user.id).all
+  end
+  
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
+  end
 end

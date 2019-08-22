@@ -1,9 +1,9 @@
-<header class="mb-4">
+<header>
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <% if logged_in? %>
       <a class="navbar-brand"  href="<%= user_path(current_user) %>">Postten Dance</a>
     <% else %>
-      <a class="navbar-brand"  href="/">Postten Dance</a>
+      <a class="navbar-brand font-weight-bold"  href="/">Postten Dance</a>
     <% end %>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">

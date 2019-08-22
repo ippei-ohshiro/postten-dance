@@ -1,26 +1,44 @@
 <% unless logged_in? %>
-    <div class="center jumbotron">
+    <div class="jumbotron">
         <div class="text-center">
-            <h1>Postten<br> Dance</h1>
-            <h6>ダンスレッスン投稿サービス</h6>
-            <%= link_to 'Sign in', signup_path, class: 'btn btn-lg btn-primary' %>
-            <%= link_to 'Login', login_path, class: 'btn btn-lg btn-primary' %>
+            <h1 class="display-3 font-weight-bold">Postten<br> Dance</h1>
+            <p class="lead">ダンスレッスン投稿サービス</p>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= link_to 'Sign in', signup_path, class: 'btn btn-lg btn-outline-success' %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= link_to 'Login', login_path, class: 'btn btn-lg btn-outline-success' %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <div>
-    <div class="text-center">
-        <p>Postten Danceとは</p>
+    <div class="text-center mb-5">
+        <h2>Postten Danceとは?</h2>
         <p>ダンスに特化したオンラインレッスンサービスです</p>
     </div>
-    <div>
-        <h3>Lessonを作成</h3>
-        <p>自分で考えたオリジナルのダンスレッスンを作成し、投稿します。</p>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 text-center">
+                <h3 class="text-success offset-md-5 col-md-6">Lessonを作成</h3>
+                <p class="col-md-6 offset-md-5">自分で考えたオリジナルのダンスレッスンを作成し、投稿します。</p>
+            </div>
+            
+            <div class="col-md-5 text-center">
+                <h3 class="text-success offset-md-6 ">Lessonを受講</h3>
+                <p class="offset-md-6 col-md-6">様々なダンサーが作成したオリジナルのダンスレッスンを受講できます。様々なダンサーの練習方法、体の使い方などを学べます。</p>
+            </div>
+        </div>
     </div>
-    <div>
-        <h3>Lessonを受講</h3>
-        <p>様々なダンサーが作成したオリジナルのダンスレッスンを受講できます。様々なダンサーの練習方法、体の使い方などを学べます。</p>
+    <div class="text-center">
+        <p class="lead">今すぐ登録する</p>
+        <%= link_to 'Sign in', signup_path, class: 'btn btn-lg btn-success mb-5' %>
     </div>
-    <%= link_to 'Sign in', signup_path, class: 'btn btn-lg btn-primary' %>
 </div>
     
 <% end %>

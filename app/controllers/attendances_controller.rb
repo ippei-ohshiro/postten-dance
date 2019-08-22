@@ -12,4 +12,5 @@ class AttendancesController < ApplicationController
     flash[:success] = '受講をやめました。'
     redirect_to lessons_path
   end
+  
 end

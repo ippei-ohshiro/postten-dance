@@ -1,8 +1,10 @@
-<div  class="container">
-  <% if users.any? %>
-    <ul  class="list-unstyled">
-      <% users.each do |user| %>
-        <li class="media">
+<div class="container">
+  <h2 class="text-center">このLessonの受講中ユーザー</h2>
+  
+  <% @attendance.each do |attendance| %>
+    <% @user_id = attendance.user_id %>
+    <% user = User.find(@user_id) %>
+    <li class="media">
           <img src="" alt="">
           <div  class="media-body">
             <div>
@@ -13,8 +15,5 @@
             </div>
           </div>
         </li>
-      <% end %>
-    </ul>
-    <%= paginate users %>
   <% end %>
 </div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create,  :edit, :update] do
     member do
       get :attend
+      get :attendance_user
     end
      collection do
       get :search

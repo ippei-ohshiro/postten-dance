@@ -1,5 +1,7 @@
-<div class="text-center">
-  <h1>Log in</h1>
+<div class="text-center mt-4">
+  <h1 class="display-3 font-weight-bold">Postten<br> Dance</h1>
+  <p class="lead">ダンスレッスン投稿サービス</p>
+  <h1 class="mt-5 font-weight-bold">ログイン</h1>
 </div>
 
 <div class="row">
@@ -17,9 +19,9 @@
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 
-      <%= f.submit 'Log in', class: 'btn btn-primary btn-block' %>
+      <%= f.submit 'Log in', class: 'btn btn-success btn-block' %>
     <% end %>
 
-    <p>New user? <%= link_to 'Sign up now!', signup_path %></p>
+    <p>新規登録はこちらから→ <%= link_to 'Sign up now!', signup_path %></p>
   </div>
 </div>

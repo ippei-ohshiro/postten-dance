@@ -1,25 +1,31 @@
-<% if lessons.any? %>
-  <ul class="list-unstyled">
-    <% lessons.each do |lesson| %>
-      <li class="media">
-        <img class="mr-2 rounded" src="" alt="">
-        <div class="media-body">
-          <div>
-            <%= lesson.title %>
+  <% if lessons.any? %>
+    <ul class="list-unstyled">
+      <% lessons.each do |lesson| %>
+        <li class="media">
+          <img class="mr-2 rounded" src="" alt="">
+          <div class="media-body">
+          <div class="card mb-5">
+            <div class="card-header bg-secondary text-white">
+              <%= lesson.title %>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <p><%= lesson.subtitle %></p>
+              </div>
+              <div class="row  mb-2">
+                <% if current_user == lesson.user %>
+                  <p><%= link_to '詳細', lesson_path(lesson), class: "btn btn-md btn-primary"   %></p>
+                  <p><%= link_to '編集', edit_lesson_path(lesson), class: "btn btn-md btn-primary" %></p>
+                  <p><%= link_to '削除', lesson, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-md btn-danger" %></p>
+                <% else %>
+                  <%= render 'attendances/attendance_button', lesson: lesson %>
+                <% end %>
+              </div>
+            </div>
+            </div>
           </div>
-          <div>
-            <p><%= lesson.subtitle %></p>
-          </div>
-          <div>
-            <% if current_user == lesson.user %>
-              <p><%= link_to '詳細', lesson_path(lesson) %></p>
-              <p><%= link_to '編集', edit_lesson_path(lesson) %></p>
-              <p><%= link_to '削除', lesson, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></p>
-            <% end %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-  <%= paginate lessons %>
-<% end %>
+        </li>
+      <% end %>
+    </ul>
+    <%= paginate lessons %>
+  <% end %>

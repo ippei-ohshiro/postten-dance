@@ -1,8 +1,14 @@
-<h1><%= @lesson.title %></h1>
-<p><%= @lesson.subtitle %></p>
 
-<p><%= @lesson.content %></p>
-
-<div>
+<div class="container mt-3">
+  <h1><%= @lesson.title %></h1>
+  <p><%= @lesson.subtitle %></p>
+  <div class="card mt-5 mb-5">
+    <div class="card-body">
+      <p class="card-text"><%= simple_format(@lesson.content) %></p>
+    </div>
+  </div>
+    <%= link_to '受講中のユーザー', attendance_user_user_path(current_user) %>
+  <div>
     <%= link_to '一覧へ戻る', lessons_path, class: 'btn btn-lg btn-primary' %>
+  </div>
 </div>

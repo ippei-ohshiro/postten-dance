@@ -1,23 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
 
-<%= form_with(model: lesson, local: true) do |f| %>
-  <% if lesson.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% lesson.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+      <%= form_with(model: lesson, local: true) do |f| %>
+        <% if lesson.errors.any? %>
+          <div id="error_explanation">
+            <ul>
+              <% lesson.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+      <div class="form-group">
+        <%= f.label :title, 'タイトル' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :subtitle, 'サブタイトル' %>
+        <%= f.text_field :subtitle, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :content, '内容' %>
+        <%= f.text_area :content, size: "20x10", class: 'form-control' %>
+      </div>
+
+      <%= f.submit '投稿', class: 'btn btn-success btn-block mb-5' %>
+    <% end %>
+
     </div>
-  <% end %>
-
-  <%= f.label :title, 'タイトル' %>
-  <%= f.text_field :title %>
-
-　<%= f.label :subtitle, 'サブタイトル' %>
-  <%= f.text_field :subtitle %>
-
-  <%= f.label :content, '内容' %>
-  <%= f.text_field :content %>
-
-  <%= f.submit '投稿' %>
-<% end %>
+  </div>
+    <div class="text-center mb-5">
+      <%= link_to '一覧に戻る', lessons_path,  class: 'btn btn-lg btn-primary' %>
+    </div>
+</div>
