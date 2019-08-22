@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   has_many :lessons
   has_many :attendances
-  has_many :att_lessons, through: :attendances, source: :lesson
+  has_many :att_lessons, through: :attendances, source: :lesson, dependent: :destroy
   
   def timeline
     Lesson.all

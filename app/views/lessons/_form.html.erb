@@ -27,6 +27,11 @@
         <%= f.label :content, '内容' %>
         <%= f.text_area :content, size: "20x10", class: 'form-control' %>
       </div>
+      
+      <div>
+        <%= f.label :picture, 'picture' %>
+        <%= f.file_field :picture %>
+      </div>
 
       <%= f.submit '投稿', class: 'btn btn-success btn-block mb-5' %>
     <% end %>

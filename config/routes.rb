@@ -9,13 +9,20 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create,  :edit, :update] do
     member do
       get :attend
-      get :attendance_user
+      
     end
-     collection do
+    collection do
       get :search
     end
   end
   
-  resources :lessons
+  resources :lessons do
+    member do
+      get :attendance_user
+    end  
+    collection do
+      get :search
+    end
+  end
   resources :attendances, only: [:create, :destroy]
 end

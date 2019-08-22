@@ -5,9 +5,12 @@
   <div class="card mt-5 mb-5">
     <div class="card-body">
       <p class="card-text"><%= simple_format(@lesson.content) %></p>
+      
+      <%= image_tag(@lesson.picture_url) if @lesson.picture.present? %>
+      
     </div>
   </div>
-    <%= link_to '受講中のユーザー', attendance_user_user_path(current_user) %>
+    <%= link_to '受講中のユーザー', attendance_user_lesson_path(@lesson) %>
   <div>
     <%= link_to '一覧へ戻る', lessons_path, class: 'btn btn-lg btn-primary' %>
   </div>

@@ -24,7 +24,7 @@ class LessonsController < ApplicationController
     else
       @lessons = current_user.timeline.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'Lessonの投稿に失敗しました。'
-      render 'lesson/new'
+      render 'lessons/new'
     end
   end
 
@@ -39,7 +39,7 @@ class LessonsController < ApplicationController
       redirect_to @lesson
     else
       flash.now[:danger] = 'Lessonの更新に失敗しました。'
-      render 'lesson/edit'
+      render 'lessons/edit'
     end
   end
 
@@ -49,10 +49,15 @@ class LessonsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
+  def attendance_user
+    @lesson = Lesson.find(params[:id])
+    @users = @lesson.att_users
+  end
+  
   private
 
   def lesson_params
-    params.require(:lesson).permit(:title, :subtitle, :content)
+    params.require(:lesson).permit(:title, :subtitle, :content, :picture)
   end
   
   def correct_user

@@ -52,10 +52,6 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
-  def attendance_user
-    @user = User.find(params[:id])
-    @attendance = Attendance.where(user_id: @user.id).all
-  end
   
   private
 

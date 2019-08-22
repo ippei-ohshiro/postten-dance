@@ -1,9 +1,7 @@
 <div class="container">
   <h2 class="text-center">このLessonの受講中ユーザー</h2>
   
-  <% @attendance.each do |attendance| %>
-    <% @user_id = attendance.user_id %>
-    <% user = User.find(@user_id) %>
+  <% @users.each do |user| %>
     <li class="media">
           <img src="" alt="">
           <div  class="media-body">
