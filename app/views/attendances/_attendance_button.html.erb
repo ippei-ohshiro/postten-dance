@@ -2,8 +2,8 @@
   <% if current_user.att_lesson?(lesson) %>
     <%= form_with(model: current_user.attendances.find_by(lesson_id: lesson.id), local: true, method: :delete) do |f| %>
       <%= hidden_field_tag :lesson_id, lesson.id %>
-      <%= f.submit '受講をやめる', class: 'btn btn-danger btn-md' %>
-      <p><%= link_to '詳細', lesson_path(lesson), class: 'btn btn-primary btn-md' %></p>
+      <p><%= f.submit '受講をやめる', class: 'btn btn-danger btn-md' %> <%= link_to '詳細', lesson_path(lesson), class: 'btn btn-primary btn-md' %> </p>
+
     <% end %>
   <% else %>
     <%= form_with(model: current_user.attendances.build, local: true) do |f| %>

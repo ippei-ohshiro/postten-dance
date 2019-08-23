@@ -2,27 +2,36 @@
     <ul class="list-unstyled">
       <% lessons.each do |lesson| %>
         <li class="media">
-          <img class="mr-2 rounded" src="" alt="">
           <div class="media-body">
-          <div class="card mb-5">
-            <div class="card-header bg-secondary text-white">
-              <%= lesson.title %>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                <p><%= lesson.subtitle %></p>
-              </div>
-              <div class="row  mb-2">
-                <% if current_user == lesson.user %>
-                  <p><%= link_to '詳細', lesson_path(lesson), class: "btn btn-md btn-primary"   %></p>
-                  <p><%= link_to '編集', edit_lesson_path(lesson), class: "btn btn-md btn-primary" %></p>
-                  <p><%= link_to '削除', lesson, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-md btn-danger" %></p>
-                <% else %>
-                  <%= render 'attendances/attendance_button', lesson: lesson %>
-                <% end %>
-              </div>
-            </div>
-            </div>
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-2">
+                  <% if lesson.user.picture.present? %>
+                    <%= image_tag(lesson.user.picture_url, :size => "200x200", class: "card-img") %>
+                  <% else %>
+                    <%= image_tag("default.jpg", :size => "200x200", class: "card-img") %>
+                  <% end %>
+                </div>
+                
+                <div class="col-md-10">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= lesson.title %></h5>
+                    <p class="card-text"><%= lesson.subtitle %></p>
+                
+                    <div class="row  mb-2">
+                      <% if current_user == lesson.user %>
+                        <p><%= link_to '詳細', lesson_path(lesson), class: "btn btn-md btn-primary mr-1" %></p>
+                        <p><%= link_to '編集', edit_lesson_path(lesson), class: "btn btn-md btn-primary mr-1" %></p>
+                        <p><%= link_to '削除', lesson, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-md btn-danger" %></p>
+                      <% else %>
+                        <%= render 'attendances/attendance_button', lesson: lesson %>
+                      <% end %>
+                    </div>
+                    <%= link_to '投稿者_'+lesson.user.name, user_path(lesson.user) %> <span class="text-muted">投稿日<%= lesson.created_at %></span>
+                  </div>
+                </div>
+            </div>    
+          </div>
           </div>
         </li>
       <% end %>

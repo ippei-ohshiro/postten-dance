@@ -5,6 +5,13 @@
         <div class="">
           <h3><%= user.name %></h3>
         </div>
+        
+        <% if @user.picture.present? %>
+          <%= image_tag(@user.picture_url, :size => "300x300") %>
+        <% else %>
+          <%= image_tag("default.jpg", :size => "300x300") %>
+        <% end %>
+
       <% if current_user == user %>
         <div class="">
           <%= link_to 'Profileを編集する', edit_user_path(user) %>

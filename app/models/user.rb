@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :picture, PictureUploader
   before_save { self.email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -9,7 +10,6 @@ class User < ApplicationRecord
   has_many :lessons
   has_many :attendances
   has_many :att_lessons, through: :attendances, source: :lesson, dependent: :destroy
-  
   def timeline
     Lesson.all
   end
