@@ -4,6 +4,6 @@
     <%= render "users/users", users: @users %>
 
   <div class="text-center">
-    <%= link_to 'Profileに戻る', users_path(@user), class: 'btn btn-lg btn-primary' %>
+    <%= link_to 'Profileに戻る', user_path(current_user), class: 'btn btn-lg btn-primary' %>
   </div>
 </div>
