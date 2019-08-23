@@ -3,12 +3,13 @@
 
     <%= form_with(model: user, local: true) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
-      
-      <div class="form-group">
-        <%=f.label :picture, 'Profile画像を編集' %>
-        <%= f.file_field :picture %>
-      </div>
-      <p><%= f.check_box :remove_picture %>画像を削除</p>
+      <% if logged_in? %>
+        <div class="form-group">
+          <%=f.label :picture, 'Profile画像を編集' %>
+          <%= f.file_field :picture %>
+        </div>
+        <p><%= f.check_box :remove_picture %>画像を削除</p>
+      <% end %>
   
       <div class="form-group">
         <%= f.label :name, 'Name' %>
