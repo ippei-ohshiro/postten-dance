@@ -19,9 +19,9 @@
       <% end %>
       </div>
       <% if current_user == user %>
-        <div class="col-md-3">
-          <%= link_to 'Lesson作成', new_lesson_path, class: "btn btn-success btn-block" %>
-          <%= link_to 'Lessonを受講', lessons_path, class: "btn btn-success btn-block" %>
+        <div class="col-md-3 mt-5">
+          <%= link_to 'Lessonを受講', lessons_path, class: "btn btn-success btn-block mb-5" %>
+          <%= link_to 'Lesson作成', new_lesson_path, class: "btn btn-success btn-block " %>
         </div>
       <% else %>
       <div class="col-md-6">
