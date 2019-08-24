@@ -7,7 +7,7 @@
       <p class="card-text"><%= simple_format(@lesson.content) %></p>
       
       <%= image_tag(@lesson.picture_url) if @lesson.picture.present? %>
-      <p><%= @lesson.comment %></p>
+      <p><%= @lesson.comment if @lesson.picture.present? %></p>
       
     </div>
   </div>
