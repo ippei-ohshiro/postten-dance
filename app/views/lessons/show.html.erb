@@ -6,8 +6,11 @@
     <div class="card-body">
       <p class="card-text"><%= simple_format(@lesson.content) %></p>
       
-      <%= image_tag(@lesson.picture_url) if @lesson.picture.present? %>
-      <p><%= @lesson.comment if @lesson.picture.present? %></p>
+      <!--<%= image_tag(@lesson.picture_url) if @lesson.picture.present? %>-->
+      <!--<p><%= @lesson.comment if @lesson.picture.present? %></p>-->
+      <div class="text-center mt-5">
+        <%= video_tag @lesson.video_url.to_s,loop: true, controls: true, width: 600, height: 400 ,id: "mv" %>
+      </div>
       
     </div>
   </div>

@@ -1,4 +1,5 @@
 class Lesson < ApplicationRecord
+  mount_uploader :video, VideoUploader
   mount_uploader :picture, PictureUploader
   belongs_to :user
   
